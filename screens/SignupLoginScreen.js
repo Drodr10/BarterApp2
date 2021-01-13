@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'reac
 import firebase from "firebase";
 import db from "../config";
 
-export default class WelcomeScreen extends React.Component{
+export default class SignupLoginScreen extends React.Component{
     constructor(){
         super();
         
@@ -16,24 +16,24 @@ export default class WelcomeScreen extends React.Component{
     userSignUp = async(email, pass) => {
         firebase.auth().createUserWithEmailAndPassword(email, pass)
         .then((response) => {
-            return Alert.alert("User Created Succesfully!");
+            return Alert.alert("User Added Succesfully!");
         })
         .catch(function (error){
             var errorCode = error.code;
             var errorMessage = error.message;
-            return Alert.alert(errorMessage+" Code: " + errorCode);
+            return Alert.alert(errorMessage);
         })
     }
 
     userLogin = async(email, pass) => {
         firebase.auth().signInWithEmailAndPassword(email, pass)
-        .then((response) => {
+        .then(() => {
             return Alert.alert("Logged In Succesfully!");
         })
         .catch(function (error){
             var errorCode = error.code;
             var errorMessage = error.message;
-            return Alert.alert(errorMessage+" Code: " + errorCode);
+            return Alert.alert(errorMessage);
         })
     }
     
@@ -42,7 +42,7 @@ export default class WelcomeScreen extends React.Component{
           <View style={styles.container}>
               <View>
                 <Text style={styles.header}>
-                    Book Santa
+                    Barter
                 </Text>
               </View>
               <View>
@@ -77,21 +77,21 @@ export default class WelcomeScreen extends React.Component{
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#FFE0B2',
       alignItems: 'center',
       justifyContent: 'center',
     },
     header: {
         fontSize: 20,
         fontWeight: "bold",
-        color: "red",
+        color: "#E4A958",
         paddingLeft: 40,
     },
     input: {
         width: 120,
         height: 60,
         borderWidth: 5,
-        borderColor: "green",
+        borderColor: "white",
         fontSize: 11,
         margin: 20,
     },
@@ -104,11 +104,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderWidth: 7,
         borderRadius: 30,
-        backgroundColor: "blue",
-        shadowColor: "#000099",
+        backgroundColor: "white",
     },
     bt: {
-        color: "white",
+        color: "#EC9428",
         fontSize: 14,
     }
   });
